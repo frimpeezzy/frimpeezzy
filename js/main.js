@@ -224,7 +224,7 @@
 		lockAnchors: false,
 		navigationPosition: 'right',
 		showActiveTooltip: false,
-		anchors:['first-section', 'second-section', 'third-section', 'fourth-section', 'fifth-section'],
+		anchors:['welcome', 'about', 'portfolio', 'testimonials', 'hire-me', 'contact'],
 		verticalCentered: false,
 		responsiveWidth: 991,
 		scrollOverflow: true,
