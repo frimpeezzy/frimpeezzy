@@ -443,25 +443,13 @@
                                     <p>Do you have some feedback regarding my services? Are you interested in speaking to me about a particular service? I'd love to hear from you. Send me your compliments, questions or concerns.</p>
                                 </div>
                                 <!-- <form action="https://formspree.io/your@email.com" method="POST" /> -->
-                                <form name="contact" action="thank-you.html" method="POST" netlify>
+                                <form id="myForm" >
                                     <div class="photoghor-form-inner">
-                                        <div class="photoghor-form-input photoghor-form-input-half">
-                                            <input type="text" name="name" placeholder="Name*" required>
-                                        </div>
-                                        <div class="photoghor-form-input photoghor-form-input-half">
-                                            <input type="email" name="email" placeholder="Email*" required>
-                                        </div>
-                                        <div class="photoghor-form-input">
-                                            <input type="text" name="subject" placeholder="Subject*" required>
-                                        </div>
-                                        <div class="photoghor-form-input">
-                                            <textarea name="message" cols="30" rows="5" placeholder="Message"></textarea>
-                                        </div>
-                                        <div class="photoghor-form-input">
-                                            <button type="submit" class="button" data-content="Submit">
-                                                <span>Submit</span>
-                                            </button>
-                                        </div>
+                                        <div class="photoghor-form-input photoghor-form-input-half"><input name="name" required="" type="text" placeholder="Name*" /></div>
+                                        <div class="photoghor-form-input photoghor-form-input-half"><input name="email" required="" type="email" placeholder="Email*" /></div>
+                                        <div class="photoghor-form-input"><input name="subject" required="" type="text" placeholder="Subject*" /></div>
+                                        <div class="photoghor-form-input"><textarea cols="30" name="message" rows="5" placeholder="Message"></textarea></div>
+                                        <div class="photoghor-form-input"><button class="button" type="submit" data-content="Submit"> Submit </button></div>
                                     </div>
                                 </form>
                                 <p class="form-message"></p>
@@ -529,6 +517,23 @@
     <!--// Wrapper -->
 
     <!-- Js Files -->
+    <!-- Load jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+    // POST form data to zapier on submit
+    $('#myForm').submit(function(e){
+    e.preventDefault();
+    $.ajax({
+    url:"https://hooks.zapier.com/hooks/catch/4146669/c8s9da/",
+    type:'post',
+    data:$('#myForm').serialize(),
+    success:function(){
+    // Redirect to another success page
+    window.location = "thank-you.html";
+    }
+    });
+    });
+    </script>
     <script src="js/vendor/modernizr-3.6.0.min.js"></script>
     <script src="js/vendor/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
